@@ -1,0 +1,40 @@
+const Data = [
+    {
+        "question": "",
+        "title": "",
+        "q1": "",
+        "q1Answers": {
+            "a1": "",
+            "a1Value": "",
+            "a2": "",
+            "a2Value": "",
+            "a3": "",
+            "a3Value": "",
+            "a4": "",
+            "a4Value": ""
+        },
+        "q2": "",
+        "q2Answers": {},
+        "q3": "",
+        "q3Answers": {},
+        "q4": "",
+        "q4Answers": {},
+        "q5": "",
+        "q5Answers": {},
+        "q6": "",
+        "q6Answers": {},
+        "q7": "",
+        "q7Answers": {},
+        "q8": "",
+        "q8Answers": {},
+        "q9": "",
+        "q9Answers": {},
+        "q10": "",
+        "q10Answers": {},
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+    },
+    {}
+]
