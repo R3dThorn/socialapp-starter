@@ -19,17 +19,20 @@ class App extends React.Component {
           exact
           path="/profile/:username"
           component={Profile}
-        />
+        /> 
+        
+        <Route
+        exact
+        path="/messagefeed"
+        component={MessageFeed}
+      />
+
         <Route
           exact
           path="*"
           component={NotFound}
         />
-        <Route
-          exact
-          path="/messagefeed"
-          component={MessageFeed}
-        />
+        
       </Switch>
     );
   }
