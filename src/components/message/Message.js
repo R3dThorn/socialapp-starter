@@ -1,19 +1,17 @@
-import React, { Component } from "react"
-import "./Message.css"
+import React from "react"
+import "../message/Message.css"
 
-class Message extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            //sample text
-        }
-    }
-
-    render() {
+class Message extends React.Component {
+    render () {
         return (
-            <div className="Message">
-                <p>sample text</p>
-            </div>
+            <li className="Message">
+                At {this.props.createdAt}, {this.props.username} posted:
+                <br />
+                {this.props.text}
+        <div className="like-count"> Likes: {this.props.likes.length}</div>
+            </li>
         )
     }
 }
+
+export default Message

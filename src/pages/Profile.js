@@ -7,7 +7,7 @@ import { Avatar } from 'antd';
 import { userIsAuthenticated } from "../redux/HOCs";
 import { UserOutlined } from '@ant-design/icons';
 import { Layout } from 'antd';
-import DataService from "../dataService"
+import DataService from "../services/dataService"
 
 
 const Profile = props => {

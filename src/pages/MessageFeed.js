@@ -1,20 +1,42 @@
-import React from "react";
+import React from "react"
 import Menu from "../components/menu/Menu"
+import BackendService from "../services/dataService"
+import Message from "../components/message/Message"
 import { userIsAuthenticated } from "../redux/HOCs"
 
-class MessageFeed extends React.Component{
-    constructor(props){
-        super(props)
-    }
+class MessageFeed extends React.Component {
+    state = { messages: [] }
 
-    render(){
-        // need to call the message list from the user's profile with a variable here for use in the render
-        return(
+    componentDidMount() {
+        new BackendService().getRecentMessages().then(messages => {
+            this.setState({ messages })
+        })
+    }
+    render() {
+        if (this.state.messages.length === 0) {
+            return (
+                <div className="MessageFeed">
+                    <Menu />
+                    <h1>Duck Feed</h1>
+                    <h3>Loading...</h3>
+                </div>
+            )
+        }
+
+        return (
             <div className="MessageFeed">
                 <Menu />
-                <p>sample text</p>
+                <h1>Duck Feed</h1>
+                <ul>
+                    {this.state.messages.map(msg => (
+                    <Message key={msg.id} {...msg} />
+                    ))}
+                </ul>
             </div>
         )
     }
+
 }
+
+// export default MessageFeed;
 export default userIsAuthenticated(MessageFeed)

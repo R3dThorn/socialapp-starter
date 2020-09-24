@@ -1,9 +1,8 @@
 import React from 'react'
-import DataService from '../../dataService'
+import DataService from '../../services/dataService'
 import { Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import { Layout } from 'antd';
-import Funkyduck from '../userPicture/assets/images/Funkyduck.jpg'
 
 class ProfileCard extends React.Component {
   constructor(props) {
@@ -22,13 +21,12 @@ class ProfileCard extends React.Component {
     this.client = new DataService()
   }
 
-
   componentDidMount() {
     console.log(this.props.username)
     this.client.getSingleUser(this.props.username)
       .then(response => this.setState({
-        username: response.data.user.username, 
-        pictureLocation: "https://socialapp-api.herokuapp.com"+response.data.user.pictureLocation,
+        username: response.data.user.username,
+        pictureLocation: "https://socialapp-api.herokuapp.com" + response.data.user.pictureLocation,
         displayName: response.data.user.displayName
       }))
     this.client.getUserPicture(this.props.username)
@@ -37,25 +35,26 @@ class ProfileCard extends React.Component {
 
   onChange = event => {
     let pictureSet
-    if(event.target.files) {
+    if (event.target.files) {
       pictureSet = event.target.files[0]
-    } 
-    this.setState({picture: pictureSet})
-
+    }
+    this.setState({ picture: pictureSet })
   }
+
   fileUpload(file) {
     let formData = new FormData()
     formData.append("picture", file)
     return formData
-  } 
+  }
+
   setUserPicture() {
     let formData = this.fileUpload(this.state.picture)
-    this.client.putUserPicture(this.state.username, formData).then(()=>{
+    this.client.putUserPicture(this.state.username, formData).then(() => {
       this.client.getSingleUser(this.props.username)
-      .then(response => this.setState({
-        username: response.data.user.username, 
-        pictureLocation: "https://socialapp-api.herokuapp.com"+response.data.user.pictureLocation
-      }))
+        .then(response => this.setState({
+          username: response.data.user.username,
+          pictureLocation: "https://socialapp-api.herokuapp.com" + response.data.user.pictureLocation
+        }))
     })
   }
 
@@ -111,26 +110,31 @@ class ProfileCard extends React.Component {
       height: '60px',
       fontSize: '18px',
     }
+
     let userImage
-    if(this.state.pictureLocation==="https://socialapp-api.herokuapp.comnull") {
+    if (this.state.pictureLocation === "https://socialapp-api.herokuapp.comnull") {
       userImage = (<div style={avatar} className="avatar">
-      <Avatar shape="square" size={130} icon={<UserOutlined />} />
-    </div>)
-    }else{
+        <Avatar shape="square" size={130} icon={<UserOutlined />} />
+      </div>)
+    } else {
       userImage = (<img src={this.state.pictureLocation} />)
     }
-      return (
-        <Content style={content} className="content">
+
+    return (
+      <Content style={content} className="content">
         <div style={card} className="Profile">
-         {userImage} 
-          
+          {userImage}
+
           <p>{this.state.username}</p>
           <p>{this.state.about}</p>
           <p>{this.dateBuilder(this.state.createdAt)}</p>
-          <input onChange = {this.onChange} type="file" name="picture"/> 
+
+          <input onChange={this.onChange} type="file" name="picture" />
+
           <div style={button} className="Button">
             <button onClick={this.setUserPicture}>Change Picture</button>
           </div>
+
         </div>
       </Content>
     );
