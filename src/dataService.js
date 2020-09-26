@@ -1,6 +1,9 @@
 import axios from 'axios';
 class DataService {
-    constructor(url = 'https://socialapp-api.herokuapp.com', client = axios.create()){
+    constructor
+    (url = 'https://socialapp-api.herokuapp.com', 
+    client = axios.create())
+    {
         this.url = url;
         this.client = client;
     }
@@ -9,10 +12,10 @@ class DataService {
     }
     getUsers(){
         return this.client.get(this.url + "/users")
-    
+
     }
-    getUserName(userName){
-        return this.client.get(this.url+"/users/"+userName)
+    getSingleUser(username) {
+        return this.client.get(`${this.url}/users/${username}`)
     }
 
     patchUser(userName){
@@ -28,7 +31,11 @@ class DataService {
     }
 
     getMessages(){
-        return this.client.get(this.url + "/messages/")
+        return this.client.get(this.url + "/messages?limit=13")
+                          .then(result=>{
+                             return result.data.messages
+        })
+        
     }
 
     getSpecificMessage(messageID){
