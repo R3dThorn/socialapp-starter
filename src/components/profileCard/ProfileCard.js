@@ -1,9 +1,8 @@
 import React from 'react'
-import DataService from '../../dataService'
+import DataService from '../../services/dataService'
 import { Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import { Layout } from 'antd';
-
 
 class ProfileCard extends React.Component {
   constructor(props) {
@@ -21,7 +20,6 @@ class ProfileCard extends React.Component {
     this.setUserPicture = this.setUserPicture.bind(this)
     this.client = new DataService()
   }
-
 
   componentDidMount() {
     console.log(this.props.username)
@@ -48,7 +46,6 @@ class ProfileCard extends React.Component {
     formData.append("picture", file)
     return formData
   }
-  
   setUserPicture() {
     let formData = this.fileUpload(this.state.picture)
     this.client.putUserPicture(this.state.username, formData).then(() => {
@@ -126,10 +123,13 @@ class ProfileCard extends React.Component {
           <p>{this.state.username}</p>
           <p>{this.state.about}</p>
           <p>{this.dateBuilder(this.state.createdAt)}</p>
+
           <input onChange={this.onChange} type="file" name="picture" />
+
           <div style={button} className="Button">
             <button onClick={this.setUserPicture}>Change Picture</button>
           </div>
+
         </div>
       </Content>
     );
