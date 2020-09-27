@@ -1,16 +1,27 @@
 import React from "react"
 import Menu from "../components/menu/Menu"
-import DataService from "../services/dataService"
+import DataService from "../dataService"
 import Message from "../components/message/Message"
 import { userIsAuthenticated } from "../redux/HOCs"
 
 class MessageFeed extends React.Component {
-    state = { messages: [] }
+    constructor(props){
+        super(props)
+        this.state = { 
+            messages: [] 
+        }
+        this.client = new DataService()
+        this.handleMessage = this.handleMessage.bind(this)
+    }
 
     componentDidMount() {
-        new DataService().getMessages().then(messages => {
+        this.client.getMessages().then(messages => {
             this.setState({ messages })
         })
+    }
+    handleMessage(){
+        let message = document.getElementById("userResponse")
+        this.client.postMessage(message.value).then(result => {console.log(result)})
     }
     render() {
         if (this.state.messages.length === 0) {
@@ -25,8 +36,11 @@ class MessageFeed extends React.Component {
 
         return (
             <div className="MessageFeed">
-                <Menu />
+                <Menu isAuthenticated={this.props.isAuthenticated}/>
                 <h1>Duck Feed</h1>
+                <label htmlFor="userResponse">Post a message: </label>
+                <input id="userResponse" type="text" name="userResponse"></input>
+                <button onClick={this.handleMessage}></button>
                 <ul>
                     {this.state.messages.map(msg => (
                     <Message key={msg.id} {...msg} />

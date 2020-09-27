@@ -7,7 +7,7 @@ import { Avatar } from 'antd';
 import { userIsAuthenticated } from "../redux/HOCs";
 import { UserOutlined } from '@ant-design/icons';
 import { Layout } from 'antd';
-import DataService from "../services/dataService"
+import DataService from "../dataService"
 
 
 const Profile = props => {
@@ -35,11 +35,7 @@ const Profile = props => {
           <ProfileCard username={props.username}/>
 
           <Footer style={footer} className="footer">
-            <Menu isAuthenticated={props.isAuthenticated} />
-            <p>Menu</p>
-            <p>Profile Page</p>
-            <p>Quiz</p>
-            <p>Log Out</p>
+            <Menu isAuthenticated={props.isAuthenticated} username={props.username}/>
           </Footer>
         </Layout>
       </>
