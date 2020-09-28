@@ -22,7 +22,7 @@ class ProfileCard extends React.Component {
     this.setUserPicture = this.setUserPicture.bind(this)
     this.client = new DataService()
   }
-
+  // On mount, get the user's data (username, picture, and messages sent)
   componentDidMount() {
     console.log(this.props.username)
     this.client.getSingleUser(this.props.username)
