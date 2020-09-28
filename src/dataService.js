@@ -7,7 +7,7 @@ class DataService {
     ) {
         this.url = baseURL
         this.client = client
-        this.token = JSON.parse(localStorage.getItem("login")).result.token
+        this.userData = JSON.parse(localStorage.getItem("login"))
     }
     registerUser(userData) {
         return this.client.post(this.url + "/users", userData)
@@ -19,7 +19,7 @@ class DataService {
 
     putUserPicture(username, picture) {
         return this.client.put(`${this.url}/users/${username}/picture`, picture, {
-            headers: { Authorization: "Bearer " + this.token }
+            headers: { Authorization: "Bearer " + this.userData.result.token }
         })
     }
 
@@ -43,8 +43,11 @@ class DataService {
         let message = {
             "text" : input
         }
-        return this.client.post(this.url+"/messages", message, {
-            headers: {Authorization: "Bearer " + this.token}
+        return this.client.post(this.url+"/messages",  message, {
+            headers: {Authorization: "Bearer " + this.userData.result.token}
+           
+
+            
         })
     }
 
@@ -57,6 +60,7 @@ class DataService {
         }
         return this.client.get(this.url + "/messages/", request)
         .then(response => {return response.data.messages})
+        
     }
 
     getSpecificMessage(messageID) {
@@ -71,13 +75,14 @@ class DataService {
             "messageId" : messageID
         }
         return this.client.post(this.url + "/likes", request, {
-            headers: {Authorization: "Bearer " + this.token}
+            headers: {Authorization: "Bearer " + this.userData.result.token}
+            
         })
     }
 
     deleteLike(likeID) {
         return this.client.delete(this.url + "/likes/" + likeID, {
-            headers: {Authorization: "Bearer " + this.token}
+            headers: {Authorization: "Bearer " + this.userData.result.token}
         })
     }
 }
