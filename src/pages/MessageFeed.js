@@ -40,7 +40,7 @@ class MessageFeed extends React.Component {
                 <h1>Duck Feed</h1>
                 <label htmlFor="userResponse">Post a message: </label>
                 <input id="userResponse" type="text" name="userResponse"></input>
-                <button onClick={this.handleMessage}></button>
+                <button onClick={this.handleMessage}>Post</button>
                 <ul>
                     {this.state.messages.map(msg => (
                     <Message key={msg.id} {...msg} />

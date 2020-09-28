@@ -3,6 +3,7 @@ import DataService from '../../dataService'
 import { Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import { Layout } from 'antd';
+import Message from "../message/Message"
 
 class ProfileCard extends React.Component {
   constructor(props) {
@@ -15,7 +16,8 @@ class ProfileCard extends React.Component {
       updatedAt: '',
       pictureLocation: '',
       googleId: '',
-      formData: {}
+      formData: {},
+      messages : []
     }
     this.setUserPicture = this.setUserPicture.bind(this)
     this.client = new DataService()
@@ -31,6 +33,10 @@ class ProfileCard extends React.Component {
       }))
     this.client.getUserPicture(this.props.username)
       .then(result => console.log(result))
+    this.client.getMessages(100, this.props.username)
+      .then(response => this.setState({
+        messages: response
+      }))
   }
 
   onChange = event => {
@@ -115,6 +121,7 @@ class ProfileCard extends React.Component {
     } else {
       userImage = (<img src={this.state.pictureLocation} />)
     }
+
     return (
       <Content style={content} className="content">
         <div style={card} className="Profile">
@@ -129,7 +136,11 @@ class ProfileCard extends React.Component {
           <div style={button} className="Button">
             <button onClick={this.setUserPicture}>Change Picture</button>
           </div>
-
+          <ul>
+              {this.state.messages.map(msg => (
+                <Message key={msg.id} {...msg} />
+                ))}
+          </ul>
         </div>
       </Content>
     );

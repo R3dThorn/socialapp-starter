@@ -50,8 +50,14 @@ class DataService {
         })
     }
 
-    getMessages() {
-        return this.client.get(this.url + "/messages/")
+    getMessages(limit, username) {
+        let request = {
+            params: {
+                "limit" : limit,
+                "username" : username
+            }
+        }
+        return this.client.get(this.url + "/messages/", request)
         .then(response => {return response.data.messages})
     }
 
@@ -62,12 +68,21 @@ class DataService {
     deleteMessage(messageID) {
         return this.client.delete(this.url + "/messages/" + messageID)
     }
-    postLike() {
-        return this.client.post(this.url + "/likes")
+    postLike(messageID) {
+        let token = JSON.parse(localStorage.getItem("login")).result.token
+        let request = {
+            "messageId" : messageID
+        }
+        return this.client.post(this.url + "/likes", request, {
+            headers: {Authorization: "Bearer " + token}
+        })
     }
 
     deleteLike(likeID) {
-        return this.client.delete(this.url + "/likes/" + likeID)
+        let token = JSON.parse(localStorage.getItem("login")).result.token
+        return this.client.delete(this.url + "/likes/" + likeID, {
+            headers: {Authorization: "Bearer " + token}
+        })
     }
 }
 
