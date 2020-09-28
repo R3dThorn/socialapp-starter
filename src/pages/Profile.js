@@ -35,11 +35,7 @@ const Profile = props => {
           <ProfileCard username={props.username}/>
 
           <Footer style={footer} className="footer">
-            <Menu isAuthenticated={props.isAuthenticated} />
-            <p>Menu</p>
-            <p>Profile Page</p>
-            <p>Quiz</p>
-            <p>Log Out</p>
+            <Menu isAuthenticated={props.isAuthenticated} username={props.username}/>
           </Footer>
         </Layout>
       </>
