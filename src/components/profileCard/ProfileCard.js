@@ -4,6 +4,7 @@ import { Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import { Layout } from 'antd';
 import Message from "../message/Message"
+import DeleteUser from '../deleteUser/DeleteUser'
 
 class ProfileCard extends React.Component {
   constructor(props) {
@@ -141,6 +142,7 @@ class ProfileCard extends React.Component {
                 <Message key={msg.id} {...msg} />
                 ))}
           </ul>
+          <DeleteUser />
         </div>
       </Content>
     );
