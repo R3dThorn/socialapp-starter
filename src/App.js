@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import MessageFeed from "./pages/MessageFeed"
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
+import AboutPage from "./pages/AboutPage"
 
 class App extends React.Component {
   render() {
@@ -15,6 +16,7 @@ class App extends React.Component {
                component={props => <Profile {...props} 
                                     username={props.match.params.username} />} />
         <Route exact path="/messagefeed" component={MessageFeed} />
+        <Route exact path="/about" component={AboutPage} />
         <Route exact path="*" component={NotFound} />
       </Switch>
     )

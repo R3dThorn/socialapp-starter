@@ -24,6 +24,7 @@ class MessageFeed extends React.Component {
         console.log(message.value)
         this.client.postMessage(message.value)
         .then(result => {console.log(result)})
+        .catch(error => console.error)
 
     }
     render() {
