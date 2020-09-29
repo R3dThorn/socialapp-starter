@@ -3,8 +3,8 @@ import DataService from '../../dataService'
 import { Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import { Layout } from 'antd';
+import Message from "../message/Message"
 import DeleteUser from '../deleteUser/DeleteUser'
-
 
 class ProfileCard extends React.Component {
   constructor(props) {
@@ -17,13 +17,13 @@ class ProfileCard extends React.Component {
       updatedAt: '',
       pictureLocation: '',
       googleId: '',
-      formData: {}
+      formData: {},
+      messages : []
     }
     this.setUserPicture = this.setUserPicture.bind(this)
     this.client = new DataService()
   }
-
-
+  // On mount, get the user's data (username, picture, and messages sent)
   componentDidMount() {
     console.log(this.props.username)
     this.client.getSingleUser(this.props.username)
@@ -34,6 +34,10 @@ class ProfileCard extends React.Component {
       }))
     this.client.getUserPicture(this.props.username)
       .then(result => console.log(result))
+    this.client.getMessages(100, this.props.username)
+      .then(response => this.setState({
+        messages: response
+      }))
   }
 
   onChange = event => {
@@ -49,7 +53,6 @@ class ProfileCard extends React.Component {
     formData.append("picture", file)
     return formData
   }
-  
   setUserPicture() {
     let formData = this.fileUpload(this.state.picture)
     this.client.putUserPicture(this.state.username, formData).then(() => {
@@ -119,6 +122,7 @@ class ProfileCard extends React.Component {
     } else {
       userImage = (<img src={this.state.pictureLocation} />)
     }
+
     return (
       <Content style={content} className="content">
         <div style={card} className="Profile">
@@ -127,10 +131,17 @@ class ProfileCard extends React.Component {
           <p>{this.state.username}</p>
           <p>{this.state.about}</p>
           <p>{this.dateBuilder(this.state.createdAt)}</p>
+
           <input onChange={this.onChange} type="file" name="picture" />
+
           <div style={button} className="Button">
             <button onClick={this.setUserPicture}>Change Picture</button>
           </div>
+          <ul>
+              {this.state.messages.map(msg => (
+                <Message key={msg.id} {...msg} />
+                ))}
+          </ul>
           <DeleteUser />
         </div>
       </Content>
