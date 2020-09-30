@@ -23,7 +23,11 @@ class MessageFeed extends React.Component {
         let message = document.getElementById("userResponse")
         console.log(message.value)
         this.client.postMessage(message.value)
-        .then(result => {console.log(result)})
+        .then(this.setState({ messages : [] }))
+        .then(this.client.getMessages()
+                .then(response => {
+                    this.setState({ messages : response})
+                }))
         .catch(error => console.error)
 
     }
