@@ -19,16 +19,22 @@ class MessageFeed extends React.Component {
             this.setState({ messages })
         })
     }
+    // On POST, wipe the messages array, causing the Message components to rerender
+    // then, after 0.5 seconds, refresh the messages
     handleMessage(){
         let message = document.getElementById("userResponse")
         console.log(message.value)
         this.client.postMessage(message.value)
-        .then(this.setState({ messages : [] }))
-        .then(this.client.getMessages()
-                .then(response => {
-                    this.setState({ messages : response})
-                }))
-        .catch(error => console.error)
+            .then(this.setState({ messages : [] }))
+            .then(setTimeout(() => {
+                    this.client.getMessages()
+                        .then(response => {
+                            this.setState({ messages : response})
+                        })},
+                    500
+                    )
+                )
+            .catch(error => console.error)
 
     }
     render() {
