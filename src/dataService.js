@@ -1,3 +1,4 @@
+import SkeletonInput from 'antd/lib/skeleton/Input';
 import axios from 'axios';
 
 class DataService {
@@ -56,10 +57,11 @@ class DataService {
         })
     }
 
-    getMessages(limit, username) {
+    getMessages(limit, offset, username) {
         let request = {
             params: {
                 "limit" : limit,
+                "offset" : offset,
                 "username" : username
             }
         }

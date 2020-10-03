@@ -34,7 +34,7 @@ class ProfileCard extends React.Component {
       }))
     this.client.getUserPicture(this.props.username)
       .then(result => console.log(result))
-    this.client.getMessages(100, this.props.username)
+    this.client.getMessages(100, 0, this.props.username)
       .then(response => this.setState({
         messages: response
       }))

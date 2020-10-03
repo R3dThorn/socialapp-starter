@@ -25,7 +25,7 @@ class Menu extends React.Component {
             <Link to={`/profile/${username}`}>Profile</Link>
             <Link to="/messagefeed">Message Feed</Link>
             <Link to="/logout" onClick={this.handleLogout}>
-              logout
+              Logout
             </Link>
           </div>
         )}
