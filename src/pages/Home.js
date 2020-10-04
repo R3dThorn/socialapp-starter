@@ -15,7 +15,7 @@ class Home extends React.Component {
     const flex = {
       display: 'flex',
       flexDirection: 'row', 
-      //justifyContent: 'space-between'
+      justifyContent: 'space-evenly',
     }
 
 
