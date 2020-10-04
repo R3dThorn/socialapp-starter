@@ -29,6 +29,18 @@ class Message extends React.Component {
             }))
         }
     }
+
+    dateBuilder(date) {
+        if (date) {
+          const d = date.slice(0, 10).split('-')
+          const month = d[1] - 0
+          console.log(month)
+          const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
+            'September', 'October', 'November', 'December']
+          return `${months[month - 1]} ${d[2]}, ${d[0]}`
+        }
+        return null
+      }
     // If no like, POST a like, and set the state to reflect this change
     handleLike(){
         if(this.state.likedByUser === false) {
@@ -47,10 +59,12 @@ class Message extends React.Component {
                 .then(this.setState((state) => ({likedByUser : false, likes : state.likes - 1})))
             )
     }
+
     render(){ 
         return (
-            <li className="Message" id={this.props.id}>
-                At {this.props.createdAt}, {this.props.username} posted:
+
+            <div className="Message" id={this.props.id} >
+                At {this.dateBuilder(this.props.createdAt)}, {this.props.username} posted:
                 <br />
                 {this.props.text}
                 <div className="like-count"> 
@@ -59,7 +73,7 @@ class Message extends React.Component {
                         Like
                     </button>
                 </div>
-            </li>
+            </div>
         )
     }
 }

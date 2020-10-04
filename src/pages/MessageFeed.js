@@ -36,10 +36,13 @@ class MessageFeed extends React.Component {
                     <h3>Loading...</h3>
                 </div>
             )
-        }
+    
+        
+
+    }
 
         return (
-            <div className="MessageFeed">
+            <div className='messageFeed'>
                 <Menu isAuthenticated={this.props.isAuthenticated}/>
                 <h1>Duck Feed</h1>
                 <label htmlFor="userResponse">Post a message: </label>
@@ -47,15 +50,17 @@ class MessageFeed extends React.Component {
                 <button onClick={()=>this.handleMessage()}>Post</button>
                
 
-                <ul>
+                <div>
                     {this.state.messages.map(msg => (
                     <Message key={msg.id} {...msg} />
                     ))}
-                </ul>
+                </div>
             </div>
         )
-    }
 
+        
+    }
+    
 }
 
 export default userIsAuthenticated(MessageFeed)

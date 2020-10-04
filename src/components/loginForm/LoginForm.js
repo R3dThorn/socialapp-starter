@@ -24,8 +24,9 @@ class LoginForm extends React.Component {
   render() {
     const { loading, error } = this.props;
     return (
-      <div className="LoginForm">
-        <form id="login-form" onSubmit={this.handleLogin}>
+      <div className="LoginForm" style={{width:400}}>
+        <form id="login-form" onSubmit={this.handleLogin}
+        style={{width:400}}> 
           <label htmlFor="username">Username</label>
           <input
             type="text"
