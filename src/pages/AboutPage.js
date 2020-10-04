@@ -10,7 +10,7 @@ class About extends React.Component {
 
                 <div id="AboutRDR"></div>
 
-                    <h1>About</h1>
+                    <h1>WHO WE ARE!</h1>
                     <p>
                         We’re <strong>RIOTERS REINVENTED</strong>. We’re not your run-of-the-mill developers.
                         <br></br>
@@ -21,13 +21,13 @@ class About extends React.Component {
                         As code innovaters we invite you to join the Riot!
                         <br></br>
                     </p>
-                    <h2>"We're not bad ducks, We badass!"</h2>
+                    <h2>"We're not bad ducks, We're badass!"</h2>
                 
 
 
 
                 <div className="Gallery">
-                    {/* <img src="../assets/images/Punkiduckie.jpg">Punki Duckie Rioter</img>
+                    {/* <img src="../assets/images/Punkduckie.jpg">Punk Duckie Rioter</img>
                         <div className="desc"> Colin Stachelrodt </div> 
                     <img src="../assets/images/Zenduckie.png">Zen Duckie Rioter</img>
                         <div className="desc"> Elisua Hernandez </div>
