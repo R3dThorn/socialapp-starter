@@ -22,6 +22,8 @@ class MessageFeed extends React.Component {
             this.setState({ messages })
         })
     }
+    // On POST, wipe the messages array, causing the Message components to rerender
+    // then, after 0.5 seconds, refresh the messages
     handleMessage(){
         let message = document.getElementById("userResponse")
         console.log(message.value)
@@ -36,7 +38,6 @@ class MessageFeed extends React.Component {
                     )
                 )
         .catch((error)=>{(console.error(error))})
-
     }
     render() {
         if (this.state.messages.length === 0) {
