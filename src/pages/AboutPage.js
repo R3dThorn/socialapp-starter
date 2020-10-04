@@ -1,6 +1,7 @@
 import React from "react";
 import Menu from "../components/menu/Menu";
 import "./AboutPage.module.css";
+import { userIsAuthenticated } from "../redux/HOCs"
 
 class About extends React.Component {
     render() {
@@ -47,4 +48,4 @@ class About extends React.Component {
     }
 }
 
-export default About 
+export default userIsAuthenticated(About) 
