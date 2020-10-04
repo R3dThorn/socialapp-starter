@@ -1,8 +1,10 @@
-import React from "react"
+import React, { Component, createElement } from "react"
 import "../message/Message.css"
 import DataService from "../../dataService"
+import { Comment, Tooltip } from "antd"
+import { LikeOutlined, LikeFilled } from '@ant-design/icons';
 
-class Message extends React.Component {
+class Message extends Component {
     constructor(props) {
         super(props)
         // For each message, grab its ID, whether or not it's been liked by the signed in user, the amount of likes
@@ -56,17 +58,25 @@ class Message extends React.Component {
         })
     }
     render() {
+        const action = [
+            <Tooltip key="comment-basic-like">
+                <span onClick={this.handleLike}>
+                    {createElement(this.state.likedByUser === true ? LikeFilled : LikeOutlined)}
+                    <span>{this.state.likes}</span>
+                </span>
+            </Tooltip>
+        ]
         return (
             <li className="Message" id={this.props.id}>
-                At {this.props.createdAt}, {this.props.username} posted:
-                <br />
-                {this.props.text}
-                <div className="like-count">
-                    Likes: {this.state.likes}
-                    <button onClick={this.handleLike}>
-                        Like
-                    </button>
-                </div>
+                <Comment 
+                    actions={action}
+                    author={this.props.username}
+                    content={<p>{this.props.text}</p>}
+                    datetime={<Tooltip>
+                    {this.props.createdAt}
+                    </Tooltip>
+                    }
+                />
             </li>
         )
     }
