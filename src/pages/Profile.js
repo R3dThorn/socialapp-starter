@@ -26,6 +26,7 @@ const Profile = props => {
           <ProfileCard username={props.username}/>
           <Footer style={footer} className="footer">
             Rioters Reinvented LLC
+
           </Footer>
         </Layout>
       </>

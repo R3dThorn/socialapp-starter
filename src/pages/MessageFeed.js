@@ -49,7 +49,10 @@ class MessageFeed extends React.Component {
                     <h3>Loading...</h3>
                 </div>
             )
-        }
+    
+        
+
+    }
         return (
             <>
                 <Menu isAuthenticated={this.props.isAuthenticated}/>
@@ -92,5 +95,4 @@ class MessageFeed extends React.Component {
         )
     }
 }
-
 export default userIsAuthenticated(MessageFeed)
