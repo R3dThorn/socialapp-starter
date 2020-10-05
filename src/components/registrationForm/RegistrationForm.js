@@ -32,8 +32,9 @@ class RegistrationForm extends React.Component {
   render() {
     const { loading, error } = this.props;
     return (
-      <div className="RegistrationForm">
+      <div className="RegistrationForm" style={{width:400}}>
         <form id="registration-form" onSubmit={this.handleRegistration}>
+          <p>New User? Register here.</p>
         <Input
             name="username"
             placeholder="Username"
