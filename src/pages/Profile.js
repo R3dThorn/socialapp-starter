@@ -19,6 +19,7 @@ const Profile = props => {
     textAlign: 'center',
     margin: 'auto',
     border: '0',
+    
     fontSize: '50px',
     padding: '30px',
     fontFamily: 'fantasy',
@@ -29,13 +30,13 @@ const Profile = props => {
   return (
     <>
         <Layout>
-          <Header style={header} className="header">
-            Rioters Reinvented
-          </Header>
+          <Menu isAuthenticated={props.isAuthenticated} username={props.username}/>
           <ProfileCard username={props.username}/>
 
+          <Header style={header} className="header">
+            Rioters Reinvented LLC
+          </Header>
           <Footer style={footer} className="footer">
-            <Menu isAuthenticated={props.isAuthenticated} username={props.username}/>
           </Footer>
         </Layout>
       </>
