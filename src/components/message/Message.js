@@ -4,7 +4,8 @@ import DataService from "../../dataService"
 import { Comment, Tooltip } from "antd"
 import { LikeOutlined, LikeFilled } from '@ant-design/icons';
 
-class Message extends Component {
+class Message extends React.Component {
+
     constructor(props) {
         super(props)
         // For each message, grab its ID, whether or not it's been liked by the signed in user, the amount of likes

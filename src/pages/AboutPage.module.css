@@ -1,0 +1,56 @@
+* {
+    box-sizing: border-box;
+  }
+
+
+body {
+    background-color: #fffb8f;
+
+}
+
+p {
+    text-align: center;
+}
+
+h1, h2 {
+    text-align: center; 
+}
+
+.images {
+    width: 20%;
+    height: 300px;
+    margin: 2.5%;
+    padding-top: 15%;
+    float: left;
+    background-color: white;
+    text-align: center;
+    color: black;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#page-row {
+    width: 100%;
+    clear: both;
+    padding: 5%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+
+.image#PunkDuck {
+    background-image: url("../assets/images/Punkduckie.jpg");
+   
+}
+
+.image#ZenDuckie {
+    background-image: url("../assets/images/Zenduckie.png");
+
+}
+.image#FunkyDuck {
+    background-image: url("../assets/images/Funkyduck.jpg");
+
+}
+.image#IrishDuckie {
+    background-image: url("../assets/images/Irishduckie.jpg");
+
+}
