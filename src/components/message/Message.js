@@ -3,6 +3,8 @@ import "../message/Message.css"
 import DataService from "../../dataService"
 import { Comment, Tooltip } from "antd"
 import { LikeOutlined, LikeFilled } from '@ant-design/icons';
+import "./Message.css"
+
 
 class Message extends Component {
     constructor(props) {
@@ -88,6 +90,17 @@ class Message extends Component {
             }, 2000)
         })
     }
+    dateBuilder(date) {
+        if (date) {
+          const d = date.slice(0, 10).split('-')
+          const month = d[1] - 0
+          console.log(month)
+          const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
+            'September', 'October', 'November', 'December']
+          return `${months[month - 1]} ${d[2]}, ${d[0]}`
+        }
+        return null
+      }
     render() {
         const action = [
             <Tooltip key="comment-basic-like">
@@ -97,26 +110,15 @@ class Message extends Component {
                 </span>
             </Tooltip>
         ]
-      return (
-
-            // <div className="Message" id={this.props.id} >
-            //     At {this.dateBuilder(this.props.createdAt)}, {this.props.username} posted:
-            //     <br />
-            //     {this.props.text}
-            //     <div className="like-count">
-            //         Likes: {this.state.likes}
-            //         <button onClick={this.handleLike}>
-            //             Like
-            //         </button>
-            //     </div>
-            // </div>
+        return (
             <li className="Message" id={this.props.id}>
                 <Comment 
                     actions={action}
-                    author={this.props.username}
+                    author={<span>{this.props.username} posted at</span>}
                     content={<p>{this.props.text}</p>}
                     datetime={<Tooltip>
-                    {this.dateBuilder(this.props.createdAt)}
+                    {<span id="Date"><b>{this.dateBuilder(this.props.createdAt)}</b>:</span>}
+
                     </Tooltip>
                     }
                 />

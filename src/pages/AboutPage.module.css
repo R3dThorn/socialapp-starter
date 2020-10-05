@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+  }
+
+
+body {
+    background-color: #fffb8f;
+    
+}
+
+p {
+    text-align: center;
+}
+
+h1, h2 {
+    text-align: center; 
+}
+
+#AboutRDR {
+    width: 100%;
+    height: 450px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("../assets/images/RDRbackdrop.jpg");
+    background-attachment: fixed;
+}
+
+
+
+   
+
+
+
+
+
+

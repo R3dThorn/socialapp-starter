@@ -1,0 +1,11 @@
+.infinite-scroll-component{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 450px;
+    margin: 0 auto;
+}
+h3{
+    text-align: center;
+}

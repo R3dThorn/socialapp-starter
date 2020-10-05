@@ -4,6 +4,7 @@ import DataService from "../dataService"
 import Message from "../components/message/Message"
 import { userIsAuthenticated } from "../redux/HOCs"
 import InfiniteScroll from "react-infinite-scroll-component"
+import "./MessageFeed.css"
 
 class MessageFeed extends React.Component {
     constructor(props){
@@ -57,7 +58,7 @@ class MessageFeed extends React.Component {
                 <Menu isAuthenticated={this.props.isAuthenticated}/>
                 <InfiniteScroll
                 dataLength={this.state.messages.length}
-                loader={<h3>Loading...</h3>}
+                loader={<h3 style={{textAlign:"center"}}>Loading...</h3>}
                 hasMore={this.state.hasMore}
                 next={() => {this.client.getMessages(100, this.state.messageCounter)
                         .then(response => {
