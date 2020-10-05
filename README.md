@@ -16,6 +16,7 @@ Team Rubber Duckie Rioters (RDR)'s final project for Kenzie Academy's Front-End 
 - Picture of zen duck (https://live.staticflickr.com/5616/30989495205_7586077853_n.jpg) 
 - Picture of irish duck (https://i.pinimg.com/736x/f7/5f/13/f75f132232d5ab903938c49ac5da07a4--rubber-duck-niall-horan.jpg)
 - Picture of silhouette duck on homepage (https://ih1.redbubble.net/work.6533007.1.mtd,375x360,n,s,TW9vbiBsaXQgbmlnaHQh,ffffff.jpg)
+- Picture of graduation duck on 404 page (https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.co3hrS-x0mL8IT_6wfG8xwHaK4%26pid%3DApi&f=1)
 
 # Special Thanks to These Contributors 
 
