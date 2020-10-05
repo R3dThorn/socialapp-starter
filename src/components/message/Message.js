@@ -66,7 +66,7 @@ class Message extends Component {
           const month = d[1] - 0
           const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
             'September', 'October', 'November', 'December']
-          return `${months[month - 1]} ${d[2]}, ${d[0]}`
+          return `${months[month - 1]} ${parseInt(d[2])-1}, ${d[0]}`
         }
         return null
       }
