@@ -135,7 +135,6 @@ class ProfileCard extends React.Component {
 
           <p>{this.state.username}</p>
           <p>{this.state.about}</p>
-          <p>{this.dateBuilder(this.state.createdAt)}</p>
 
           <input onChange={this.onChange} type="file" name="picture" />
 
