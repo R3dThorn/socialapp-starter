@@ -5,6 +5,7 @@ import { UserOutlined } from '@ant-design/icons';
 import { Layout } from 'antd';
 import Message from "../message/Message"
 import DeleteUser from '../deleteUser/DeleteUser'
+import "./ProfileCard.css"
 
 class ProfileCard extends React.Component {
   constructor(props) {
@@ -62,6 +63,10 @@ class ProfileCard extends React.Component {
           pictureLocation: "https://socialapp-api.herokuapp.com" + response.data.user.pictureLocation
         }))
     })
+      .catch(error => {
+        console.error(error)
+        alert("Picture too Powerful! Please load a picture that is 200Kb or less.")
+      })
   }
 
   // build tool to prettify date
@@ -120,7 +125,7 @@ class ProfileCard extends React.Component {
         <Avatar shape="square" size={130} icon={<UserOutlined />} />
       </div>)
     } else {
-      userImage = (<img src={this.state.pictureLocation} />)
+      userImage = (<img className="ProfilePicture" src={this.state.pictureLocation} />)
     }
 
     return (
