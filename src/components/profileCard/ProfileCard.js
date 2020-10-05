@@ -83,7 +83,7 @@ class ProfileCard extends React.Component {
   }
 
   render() {
-    const { Header, Content, Footer } = Layout;
+    const { Content } = Layout;
 
     const content = {
       backgroundColor: '#fffb8f',
@@ -96,7 +96,6 @@ class ProfileCard extends React.Component {
       fontFamily: 'Arial',
       margin: 'auto',
       textAlign: 'center',
-      fontFamily: 'arial',
       backgroundColor: 'ffffff',
     }
 
@@ -125,7 +124,7 @@ class ProfileCard extends React.Component {
         <Avatar shape="square" size={130} icon={<UserOutlined />} />
       </div>)
     } else {
-      userImage = (<img className="ProfilePicture" src={this.state.pictureLocation} />)
+      userImage = (<img className="ProfilePicture" src={this.state.pictureLocation} alt="profile picture"/>)
     }
 
     return (

@@ -32,7 +32,7 @@ class Home extends React.Component {
           </div>
           <div className="RightSide">
             <div className="Picture">
-              <img id="homeDuck" src='https://ih1.redbubble.net/work.6533007.1.mtd,375x360,n,s,TW9vbiBsaXQgbmlnaHQh,ffffff.jpg' />
+              <img id="homeDuck" src='https://ih1.redbubble.net/work.6533007.1.mtd,375x360,n,s,TW9vbiBsaXQgbmlnaHQh,ffffff.jpg' alt="mysterious duckie"/>
             </div>
           </div>
 

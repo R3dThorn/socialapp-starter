@@ -1,4 +1,3 @@
-import SkeletonInput from 'antd/lib/skeleton/Input';
 import axios from 'axios';
 
 class DataService {

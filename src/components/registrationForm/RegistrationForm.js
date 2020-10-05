@@ -2,7 +2,7 @@ import React from "react";
 import Spinner from "react-spinkit";
 import "./RegistrationForm.css";
 import DataService from "../../dataService"
-import {Input, Button} from 'antd'
+import {Input} from 'antd'
 
 class RegistrationForm extends React.Component {
   constructor(props) {

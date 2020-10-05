@@ -1,9 +1,21 @@
 body{ 
     background-color: #fffb8f;
+    display: flex;
+    flex-direction: column;
 }
-
+.NotFound{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 img{
     width: 250px;
-
-
+}
+a{
+    text-align: center;
+}
+.graduatepic{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
 }
