@@ -19,6 +19,7 @@ const Profile = props => {
     textAlign: 'center',
     margin: 'auto',
     border: '0',
+    
     fontSize: '50px',
     padding: '30px',
     fontFamily: 'fantasy',
